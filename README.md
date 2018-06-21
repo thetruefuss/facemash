@@ -4,6 +4,8 @@ As shown in The Social Network movie built with Python using the Django Web Fram
 
 **P.S:** It ranks people using [Glicko-2 Rating System](https://en.wikipedia.org/wiki/Glicko_rating_system).
 
+![Facemash Screenshot](https://image.ibb.co/j42teo/facemash_screenshot.jpg "Facemash Screenshot")
+
 ### Installation Guide
 
 Clone this repository:
