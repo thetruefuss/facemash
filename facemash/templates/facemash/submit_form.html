@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}<title>Submit - Facemash</title>{% endblock %}
+
+{% block content %}
+<div class="main text-center">
+
+  {% if messages %}
+    {% for message in messages %}
+      <h3 style="color: green;">{{ message }}</h3>
+    {% endfor %}
+  {% endif %}
+
+  <h2>Upload Photo</h2>
+  <form action="{% url 'submit' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="photo" id="id_photo" accept="image/*" required>
+    <input type="submit" value="Submit">
+  </form>
+</div>
+{% endblock %}

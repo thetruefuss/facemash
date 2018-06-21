@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}<title>Rankings - Facemash</title>{% endblock %}
+
+{% block content %}
+  <div class="main text-center">
+    <h2>Rankings</h2>
+    
+    {% for photo in photos %}
+    <div class="ranking-img-container">
+      <img src="{{ photo.photo.url }}" class="ranking-img">
+      <span class="apos">{{forloop.counter}}</span>
+    </div>
+    {% empty %}
+      <h3>No photos found.</h3>
+    {% endfor %}
+
+    {% if p %}
+      {% include 'pager.html' with page=photos %}
+    {% endif %}
+  </div>
+{% endblock content %}

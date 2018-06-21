@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}<title>Facemash</title>{% endblock %}
+
+{% block content %}
+  <div class="main text-center">
+
+    {% if index_error %}
+      <h3 style="color: red;">No photos found.</h3>
+      <h2>Click <a href="{% url 'submit' %}">here</a> to submit photos.</h2>
+
+    {% elif prev_error %}
+      <h3 style="color: red;">No photos found.</h3>
+      <h2>You haven't voted on any photo previously.</h2>
+
+    {% else %}
+      <p>Were we let in for our looks? No. Will we be judged on them? Yes.</p>
+      <p>Who<span class="apos">'</span>s Hotter? Click to Choose.</p>
+
+      <div class="images-wrapper">
+        <a id="LeftImage" href="{% url 'calculator' contestant_1.id contestant_2.id %}">
+          <img src="{{ contestant_1.photo.url }}">
+        </a>
+        <div class="choice">OR</div>
+        <a id="RightImage" href="{% url 'calculator' contestant_2.id contestant_1.id %}">
+          <img src="{{ contestant_2.photo.url }}">
+        </a>
+      </div>
+
+    {% endif %}
+  </div>
+{% endblock %}
+
+{% block javascript %}
+<script src="{% static 'js/jquery.js' %}"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $(document).keydown(function(event) {
+        if (event.keyCode == 37) {
+            document.location = $("#LeftImage").attr('href');
+        } else if (event.keyCode == 39) {
+            document.location = $("#RightImage").attr('href');
+        }
+    });
+});
+</script>
+{% endblock %}

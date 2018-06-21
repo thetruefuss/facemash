@@ -1,0 +1,9 @@
+<div>
+    {% if page.has_previous %}
+      <a href="?page={{page.previous_page_number}}"><span aria-hidden="true">&larr;</span> Previous</a>
+    {% endif %}
+
+    {% if page.has_next %}
+      <a href="?page={{page.next_page_number}}">Next <span aria-hidden="true">&rarr;</span></a>
+    {% endif %}
+</div>
